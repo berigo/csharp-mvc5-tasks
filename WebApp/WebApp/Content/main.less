@@ -1,0 +1,793 @@
+﻿@base:"../assets/bootstrap/less/";
+// Core variables and mixins
+@import "@{base}variables.less";
+@import "@{base}mixins.less";
+
+// Reset
+@import "@{base}normalize.less";
+@import "@{base}print.less";
+
+// Core CSS
+@import "@{base}scaffolding.less";
+@import "@{base}type.less";
+@import "@{base}grid.less";
+@import "@{base}forms.less";
+@import "@{base}buttons.less";
+@import "@{base}panels.less";
+@import "@{base}tables.less";
+// Components
+@import "@{base}component-animations.less";
+@import "@{base}dropdowns.less";
+@import "@{base}button-groups.less";
+@import "@{base}input-groups.less";
+@import "@{base}list-group.less";
+@import "@{base}navbar.less";
+@import "@{base}navs.less";
+@import "@{base}pagination.less";
+@import "@{base}pager.less";
+@import "@{base}alerts.less";
+@import "@{base}close.less";
+@import "@{base}badges.less";
+
+// Utility classes
+@import "@{base}utilities.less";
+
+
+// Buttons
+// Common styles
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+	text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+	@shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+	.box-shadow(@shadow);
+
+  // Reset the shadow
+  &:active,
+  &.active {
+  	.box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+}
+
+
+// Mixin for generating new styles
+.btn-styles(@btn-color: #555) {
+	#gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 5%));
+  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+  background-repeat: repeat-x;
+  border-color: darken(@btn-color, 7%);
+
+  &:hover,
+  &:focus  {
+  	background-color: darken(@btn-color, 6%);
+  	background-position: 0 -15px;
+  }
+
+  &:active,
+  &.active {
+  	background-color: darken(@btn-color, 12%);
+  	border-color: darken(@btn-color, 7%);
+  }
+}
+
+// Common styles
+.btn {
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+  	background-image: none;
+  }
+}
+
+.btn.selected {
+	#gradient > .vertical(@start-color: #f5f5f5; @end-color: #fff);
+	.reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+	background-repeat: repeat-x;
+	border-color: ##ccc;
+	&:active,
+	&.active {
+		background-image: none;
+	}
+	&:hover, &:focus  {
+		#gradient > .vertical(@start-color: #f5f5f5; @end-color: #fff);
+		background-position: 0;
+	}
+}
+
+// Apply the mixin to the buttons
+.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+
+// Variables
+@brand-color-1: #235588;
+
+@link-color: @brand-color-1;
+@link-hover-color: lighten(@link-color, 10%);
+
+@brand-primary:         @brand-color-1;
+@brand-success:         #5cb85c;
+@brand-info:            #5bc0de;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+
+@font-face {
+	font-family: 'Neris Light';
+	src: url('../content/fonts/Neris-Light.eot'); /* IE9 Compat Modes */
+	src: url('../content/fonts/Neris-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../content/fonts/Neris-Light.woff') format('woff'), /* Modern Browsers */
+	url('../content/fonts/Neris-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+	url('../content/fonts/Neris-Light.svg#41f113304a2baff5fb1024458c47f5d8') format('svg'); /* Legacy iOS */     
+	font-style:   normal;
+	font-weight:  200;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Neris Light';
+}
+
+// Margins & paddings
+
+.loopingClass (@index) when (@index >= 0) {
+	.mt@{index} { margin-top: unit(@index, px) !important; }
+	.mr@{index} { margin-right: unit(@index, px) !important; }
+	.ml@{index} { margin-left: unit(@index, px) !important; }
+	.mb@{index} { margin-bottom: unit(@index, px) !important; }
+}
+.loopingClass(0);
+.loopingClass(5);
+.loopingClass(10);
+.loopingClass(20);
+.loopingClass(30);
+
+.p30 {
+	padding: 30px !important;
+}
+
+/* Common */
+.rating {
+	color: #ffa100;
+	font-size: 16px;
+	white-space: nowrap;
+}
+
+.meta {
+	line-height: 1.1;
+}
+
+
+/* CUSTOM */
+html, body {
+	height: 100%;
+	width: 100%;
+}
+header {
+	#mainnav {
+		.navbar {
+			margin-bottom: 0;
+			min-height: inherit;
+			margin-bottom: -1px;
+		}
+	}
+}
+
+.navbar-nav {
+	> li {
+		&.active {
+			background-color: #f5f6f7;
+			a {
+				color: @brand-color-1;
+				font-weight: 700;
+			}
+		}
+		> a {
+			color: #FFF;
+			&:hover, &:focus {
+				color: @brand-color-1;
+			}
+		}
+	}
+} 
+
+footer {
+	.bar {
+		padding: 10px 0;       
+		a {
+			color: #FFF;
+			.opacity(.8);
+			transition: opacity 0.5s ease;
+			&:hover, &:focus {
+				color: #FFF;
+				.opacity(1);
+				transition: opacity 0.5s ease;
+			}
+		}
+	}
+}
+
+
+.container {
+	width: 970px !important;
+	max-width: none !important;
+}
+
+.sidebar {
+	margin-bottom: 30px;
+}
+// Home page 
+.home {
+	
+	#wrapper {
+			min-height: 100%;
+			position: relative;
+			box-shadow: inset 0px 26px 60px 10px rgba(0,0,0,0.8);
+	}
+
+	header {
+		#mainnav {
+			font-size: 16px;
+			margin-top: 20px;
+			margin-bottom: 40px;
+		}
+		nav {
+				a {
+					color: #FFF;
+				}
+			}
+	}
+	#main {
+		padding-bottom: 120px;
+		display: block;
+	}
+	.block {
+		background-image: url('../Content/Images/bg.block.png');
+		padding: 50px;
+		border-radius: 30px;
+		.query {
+			width: 480px;
+		}
+		.input-group-addon {
+			background-color: #fff;
+			padding: 10px;
+			&.bn {
+				border-right: 0 none;
+				border-left: 0 none;
+			}
+
+        }
+
+		h2 {
+			font-size: 42px;
+			color: #235588;
+			margin-bottom: 30px;
+			text-align: center;
+			margin-top: 0;
+		}
+	}
+	footer {
+			width:100%;
+			height: 100px;
+			position:absolute;
+			bottom:0;
+			left:0;
+			min-width: 970px;
+			display: block;
+	}
+}
+
+.wmax{
+        width:100%;
+}
+
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
+// Inner pages
+.inner {
+    #wrapper {
+        min-height: 100%;
+        position: relative;
+        padding: 0 0 350px;
+        background-color: #f5f6f7;
+    }
+
+    #main {
+        background-color: #f5f6f7;
+    }
+
+    header {
+        #mainnav {
+            background-color: @brand-color-1;
+        }
+
+        .bar {
+            background-color: #191d43;
+            padding: 5px 0;
+
+            .logo {
+                display: block;
+                border: 0 none;
+            }
+
+            nav {
+                a {
+                    color: #FFF;
+                }
+            }
+        }
+    }
+
+    footer {
+        background-color: #191d43;
+        width: 100%;
+        height: 350px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        min-width: 970px;
+        display: block;
+
+        .bar {
+            background-color: #191d43;
+        }
+
+        .sitemap {
+            background-color: @brand-color-1;
+            padding-bottom: 20px;
+
+            a {
+                color: lighten(@brand-color-1, 50%);
+            }
+
+            h2 {
+                color: #fff;
+            }
+
+            .sub {
+                display: block;
+
+                > a {
+                    font-weight: 700;
+                }
+
+                + .sub {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+
+    .htitle {
+        margin-bottom: 30px;
+    }
+
+    .gm-style {
+        font-size: 14px;
+    }
+
+    .block {
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        overflow: hidden;
+
+        .block-body {
+            padding: 10px 20px;
+        }
+
+        .dtable {
+            display: table;
+            width: 100%;
+            height: 185px;
+        }
+
+        .photo {
+            display: table-cell;
+            width: 280px;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .title {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .price {
+            font-size: 18px;
+
+            &.big {
+                font-size: 36px;
+                font-weight: 700;
+            }
+        }
+
+        .desc {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            padding-right: 10px;
+        }
+
+        .onmap {
+            display: block;
+            padding: 5px 10px;
+            border-bottom: 1px solid #f5f5f5;
+            border-left: 1px solid #f5f5f5;
+            transition: background-color 0.5s ease;
+            right: 0;
+            top: 0;
+            position: absolute;
+            border-bottom-left-radius: 4px;
+
+            &:hover, &:focus {
+                background-color: #fafafa;
+                text-decoration: none;
+                transition: background-color 0.5s ease;
+            }
+        }
+
+        .titlebar {
+            -moz-transition: background-color 0.5s ease;
+            -o-transition: background-color 0.5s ease;
+            -webkit-transition: background-color 0.5s ease;
+            transition: background-color 0.5s ease;
+            width:100%;
+
+            /*top: 0;
+            position: absolute;
+            
+            padding-right: 20px;*/
+
+            .btn-group > .btn:not(:last-child) {
+                border-right: 0 none;
+            }
+            .btn-group > .btn:last-child {
+                border-bottom-right-radius: 0;
+            }
+            .input-group-addon:first-child {
+                border-bottom-left-radius: 0;
+            }
+        }
+
+        &.block-vertical {
+            .photo {
+                display: block;
+                width: 100%;
+                height: 100px;
+            }
+        }
+
+        .content {
+            display: table-cell;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .dlist-item {
+            /*display: table-cell;
+			padding: 6px;
+			position: relative;*/
+            background-color: #fafafa;
+            text-align: left;
+            width: 100%;
+        }
+
+        .dlist-title {
+            background-color: @brand-color-1;
+            border: 0px;
+            color: #fafafa;
+            font-weight: bold;
+            text-align: left;
+            width: 100%;
+            border-radius: 0;
+        }
+
+        .btn {
+            /*border-radius: 0;*/
+        }
+    }
+
+    .filter {
+        padding: 10px 20px;
+        color: #000;
+        display: block;
+        font-weight: 700;
+        font-size: 110%;
+        transition: background-color 0.5s ease;
+
+        &:hover, &:focus {
+            color: #000;
+            background-color: #fafafa;
+            text-decoration: none;
+            transition: background-color 0.5s ease;
+        }
+    }
+}
+.map-container {
+	position: relative;
+	min-height: 500px;
+	.map {
+		width:100%;
+		height: 100%;
+		min-height: 100%;
+		position:absolute;
+		top: 0;
+		z-index: 0;
+	}
+	.sidebar {
+		z-index: 1;
+		position: relative;
+	}
+	.htitle {
+		z-index: 1;
+		position: relative;
+	}
+}
+
+// Bootstrap non-responsive
+
+body {
+	min-width: 970px;
+}
+
+.container .navbar-header,
+.container .navbar-collapse {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+/* Always float the navbar header */
+.navbar-header {
+	float: left;
+}
+
+/* Undo the collapsing navbar */
+.navbar-collapse {
+	display: block !important;
+	height: auto !important;
+	padding-bottom: 0;
+	overflow: visible !important;
+}
+
+.navbar-toggle {
+	display: none;
+}
+.navbar-collapse {
+	border-top: 0;
+}
+
+.navbar-brand {
+	margin-left: -15px;
+}
+
+/* Always apply the floated nav */
+.navbar-nav {
+	float: left;
+	margin: 0;
+}
+.navbar-nav > li {
+	float: left;
+}
+.navbar-nav > li > a {
+	padding: 15px;
+}
+
+/* Redeclare since we override the float above */
+.navbar-nav.navbar-right {
+	float: right;
+}
+
+#viewpage{
+   padding: 15px 0 30px;
+}
+
+/* tabs */
+
+.tabbable:before, .tabbable:after {
+    content: " ";
+    display: table;
+}
+.tabbable:before, .tabbable:after {
+    content: " ";
+    display: table;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+.tabbable:after {
+    clear: both;
+}
+.tabbable:before, .tabbable:after {
+    content: " ";
+    display: table;
+}
+.tabbable:after {
+    clear: both;
+}
+.tabbable:before, .tabbable:after {
+    content: " ";
+    display: table;
+}
+
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs {
+  border-bottom: 0;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+
+.tabs-below > .nav-tabs {
+  border-top: 1px solid #ddd;
+}
+
+.tabs-below > .nav-tabs > li {
+  margin-top: -1px;
+  margin-bottom: 0;
+}
+
+.tabs-below > .nav-tabs > li > a {
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+}
+
+.tabs-below > .nav-tabs > li > a:hover,
+.tabs-below > .nav-tabs > li > a:focus {
+  border-top-color: #ddd;
+  border-bottom-color: transparent;
+}
+
+.tabs-below > .nav-tabs > .active > a,
+.tabs-below > .nav-tabs > .active > a:hover,
+.tabs-below > .nav-tabs > .active > a:focus {
+  border-color: transparent #ddd #ddd #ddd;
+}
+
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li {
+  float: none;
+}
+
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  margin-bottom: 3px;
+}
+.tabs-left > .nav-tabs > li.active > a
+{
+  background-color: #f5f6f7;
+  }
+
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 5px;
+  border-right: 1px solid #ddd;
+  width: 100%;
+}
+
+.tabs-left > .nav-tabs > li > a {
+  margin-right: -1px;
+  -webkit-border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
+}
+
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
+  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+}
+
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus {
+  border-color: #ddd transparent #ddd #ddd;
+  *border-right-color: #ffffff;
+}
+
+.tabs-right > .nav-tabs {
+  float: right;
+  margin-left: 19px;
+  border-left: 1px solid #ddd;
+}
+
+.tabs-right > .nav-tabs > li > a {
+  margin-left: -1px;
+  -webkit-border-radius: 0 4px 4px 0;
+     -moz-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0;
+}
+
+.tabs-right > .nav-tabs > li > a:hover,
+.tabs-right > .nav-tabs > li > a:focus {
+  border-color: #eeeeee #eeeeee #eeeeee #dddddd;
+}
+
+.tabs-right > .nav-tabs .active > a,
+.tabs-right > .nav-tabs .active > a:hover,
+.tabs-right > .nav-tabs .active > a:focus {
+  border-color: #ddd #ddd #ddd transparent;
+  *border-left-color: #ffffff;
+}
+
+/* Validation*/
+
+span.field-validation-error:before {
+    font-family: FontAwesome;
+    content:"\f071";
+   display: inline-block;
+   padding-right: 5px;
+}
+
+input.input-validation-error
+{
+    /*border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;*/
+}
+.field-validation-error {
+    background: none repeat scroll 0 0 #bd4141;
+    color: #fff;
+    padding: 5px;
+    position: relative;
+    text-align: left;
+    top: -2px;
+    z-index: 50;
+    font-size: 85%;
+    float: left;
+    width: 100%;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    -o-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    -webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    .text-danger{
+        color: #fff;
+    }
+    
+}
+
+/* Loader */
+.busy-loader {
+    cursor: wait;
+    opacity: 0.2 !important;
+}
+
+.photo-employee{
+    cursor: pointer;
+    float: right;
+    height: 180px;
+}
+
+*::-webkit-input-placeholder {
+    font-family: "Neris Light";
+    font-size: small;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    font-family: "Neris Light";
+    font-size: small;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    font-family: "Neris Light";
+    font-size: small;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    font-family: "Neris Light";
+    font-size: small;
+}
