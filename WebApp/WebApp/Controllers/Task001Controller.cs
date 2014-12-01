@@ -1,4 +1,5 @@
 ﻿// Todo #001: Times picker control.
+// It is a html control. Look \Views\Task001\Index.cshtml for more info. 
 
 using System;
 using System.Collections.Generic;
