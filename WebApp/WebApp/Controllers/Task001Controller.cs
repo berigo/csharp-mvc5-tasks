@@ -1,4 +1,4 @@
-﻿// Todo #001: Time picker control.
+﻿// Todo #001: Times picker control.
 
 using System;
 using System.Collections.Generic;
@@ -13,34 +13,15 @@ namespace WebApp.Controllers
     /// </summary>
     public class Task001Controller : Controller
     {
-        // GET: Task001
-        public ActionResult InstantSelection()
+        public ActionResult Index()
         {
-            var model = new TimePickerModel { InstantSelection = true, AvailableItemsList = PrepareTimeItems() };
-
-            return View(model);
-        }
-
-        public ActionResult MultipleSelection()
-        {
-            var model = new TimePickerModel { InstantSelection = false, AvailableItemsList = PrepareTimeItems() };
+            var model = new TimePickerModel { AvailableItemsList = PrepareTimeItems() };
 
             return View(model);
         }
 
         /// <summary>
-        /// Action is called when TimePicker is in InstantSelection = true mode.
-        /// </summary>
-        /// <param name="selectedTime">Selected date and time.</param>
-        /// <returns>Action result.</returns>
-        [HttpPost]
-        public ActionResult InstantBooking(DateTime selectedTime)
-        {
-            return View("Result", new List<DateTime>{selectedTime});
-        }
-
-        /// <summary>
-        /// Action is called when TimePicker is in InstantSelection = false mode.
+        /// Submit selected datetime values.
         /// </summary>
         /// <param name="selectedTimes">Selected dates and times.</param>
         /// <returns>Action result.</returns>

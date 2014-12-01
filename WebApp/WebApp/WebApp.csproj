@@ -178,6 +178,7 @@
     <Compile Include="Models\Task001\TimeSlotItem.cs" />
     <Compile Include="Models\Task001\TimePickerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\bootstrap\.gitattributes" />
@@ -344,6 +345,7 @@
     <Content Include="Content\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="Content\images\Task001-timespicker.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -480,13 +482,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Settings.StyleCop" />
-    <Content Include="Views\Task001\InstantSelection.cshtml" />
-    <Content Include="Views\Task001\MultipleSelection.cshtml" />
+    <Content Include="Views\Task001\Index.cshtml" />
+    <Content Include="Views\Task001\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\bootstrap\css\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Tests\" />
   </ItemGroup>
   <ItemGroup>
