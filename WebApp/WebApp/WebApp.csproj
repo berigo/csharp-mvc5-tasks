@@ -172,11 +172,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Task001Controller.cs" />
+    <Compile Include="Controllers\Task002Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Task001\TimeSlotItem.cs" />
     <Compile Include="Models\Task001\TimePickerModel.cs" />
+    <Compile Include="Models\Task002\PictureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -484,6 +486,7 @@
     <Content Include="Settings.StyleCop" />
     <Content Include="Views\Task001\Index.cshtml" />
     <Content Include="Views\Task001\Result.cshtml" />
+    <Content Include="Views\Task002\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

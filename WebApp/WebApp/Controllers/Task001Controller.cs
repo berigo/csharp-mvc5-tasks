@@ -1,8 +1,9 @@
-﻿// Todo #001: Times picker control.
+﻿// Todo #001: Times picker control. Status: open
 // It is a html control. Look \Views\Task001\Index.cshtml for more info. 
 // Apply for this job at: 
 // - https://www.freelancer.com/projects/Javascript-C-Sharp-Programming/Implement-html-control-TimesPicker-Task.html
 // - https://www.odesk.com/jobs/~01485aeca6d305b13f/applications?default
+
 
 using System;
 using System.Collections.Generic;
