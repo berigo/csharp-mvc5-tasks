@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿// Todo #002: Image uploading control. Status: open
+
+using System.Web.Mvc;
 
 using WebApp.Models.Task002;
 
