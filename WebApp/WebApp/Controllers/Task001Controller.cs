@@ -44,11 +44,11 @@ namespace WebApp.Controllers
         {
             var list = new List<TimeSlotItem>();
             DateTime timeVal = new DateTime(2014,12,1,08,00,00);
-            for (int i=0; i<20; i++ )
+            for (int i=0; i<Faker.RandomNumber.Next(0,20); i++ )
             {
                   list.Add(new TimeSlotItem
                                {
-                                    TimeText   = timeVal.ToShortTimeString(),
+                                    TimeText   = timeVal.AddHours(i).ToShortTimeString(),
                                     DisplayText = Faker.Lorem.Sentence()
                                });
             }
