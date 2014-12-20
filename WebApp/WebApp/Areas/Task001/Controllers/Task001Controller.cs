@@ -8,10 +8,9 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-
 using WebApp.Models.Task001;
 
-namespace WebApp.Controllers
+namespace WebApp.Areas.Task001.Controllers
 {
     /// <summary>
     /// See views for more details. 
