@@ -182,6 +182,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Task001\Readme.txt" />
     <Content Include="assets\bootstrap\.gitattributes" />
     <Content Include="assets\bootstrap\.gitignore" />
     <Content Include="assets\bootstrap\dist\css\bootstrap-theme.css" />
