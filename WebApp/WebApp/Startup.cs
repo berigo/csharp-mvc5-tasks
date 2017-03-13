@@ -11,6 +11,8 @@ namespace WebApp
     {
         public void Configuration(IAppBuilder app)
         {
+            //another fix
+            // some changes
            // ConfigureAuth(app);
         }
     }
